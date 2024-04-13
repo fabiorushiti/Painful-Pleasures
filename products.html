@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .container {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .product h2 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .product p {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .filter-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100vh;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+      border-right: 1px solid #e9ecef;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+
+    .show-filter {
+      transform: translateX(0);
+    }
+
+    #filter-button {
+      position: relative;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background-color: black;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1;
+    }
+    
+  </style>
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+  
+  <div>
+    <button id="filter-button">Show Filter Menu</button>
+    <div class="filter-menu">
+      <h2>Filter</h2>
+      <ul>
+        <li>Category</li>
+        <li>Color</li>
+        <li>Material</li>
+        <li>Gauge</li>
+        <li>Diameter</li>
+        <li>Price</li>
+        <li>Brand</li>
+        <li>Length</li>
+        <li>Ink Color</li>
+        <li>Rating</li>
+      </ul>
+    </div>
+    <div class="container">
+      <main>
+        <div class="products-container" id="products-container"></div>
+      </main>
+    </div>
+  </div>
+  
+  <script src="header.js" defer></script>
+  <script src="scripts.js" defer></script>
+
+  <script>
+    //butoni filter nuk punon pa kete funxion 
+    function createHeader() {
+      const headerContainer = document.getElementById("header-container");
+      const headerHtml = `
+        <header>
+          
+        </header>
+      `;
+      headerContainer.innerHTML = headerHtml;
+    }
+
+ 
+    function createFooter() {
+      const footerContainer = document.getElementById("footer-container");
+      const footerHtml = `
+        <footer>
+          
+        </footer>
+      `;
+      footerContainer.innerHTML = footerHtml;
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      createHeader();
+      createFooter();
+
+      const filterButton = document.getElementById("filter-button");
+      const filterMenu = document.querySelector(".filter-menu");
+
+      filterButton.addEventListener("click", function() {
+        filterMenu.classList.toggle("show-filter");
+      });
+
+      const productsContainer = document.getElementById("products-container");
+      // produktet 
+      for (let i = 1; i <= 15; i++) {
+        const product = document.createElement("div");
+        product.classList.add("product");
+        product.dataset.category = i % 2 === 0 ? "electronics" : "clothing";
+        product.dataset.name = `Product ${i}`;
+        product.dataset.color = "black";
+        product.dataset.price = Math.floor(Math.random() * 100) + 10;
+  
+        const img = document.createElement("img");
+        img.src = `https://via.placeholder.com/300x200.png?text=Product+${i}`;
+        img.alt = `Product ${i}`;
+  
+        const title = document.createElement("h2");
+        title.textContent = `Product ${i}`;
+  
+        const price = document.createElement("p");
+        price.textContent = `$${product.dataset.price}`;
+
+        product.addEventListener("click", function() {
+            // navigimi i faqes se produkteve qe kur klikohet shkon te faqja product 1
+            window.location.href = `product${i}.html`;
+        });
+  
+        product.appendChild(img);
+        product.appendChild(title);
+        product.appendChild(price);
+  
+        productsContainer.appendChild(product);
+      }
+    });
+  </script>
+
+
+  <footer>
+    <div id="footer-container"></div>
+  </footer>
+
+  
+
+</body>
+</html>

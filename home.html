@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tattoo Parlor</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+h2, h3 {
+    color: #ff6666;
+}
+
+
+/* Banner Styles */
+.banner {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+.shop-now-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff6666;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background-color: #e64d4d;
+}
+
+/* Services Styles */
+
+/* Services Styles */
+.services {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap */
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service {
+  width: calc(50% - 20px); /* Set width to half minus the gap */
+  padding: 10px;
+  background-color: #333;
+  border-radius: 5px; /* Adjusted border-radius */
+  border: 2px solid #333; /* Added border style */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+}
+
+.service i {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #ff6666;
+}
+
+.service p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Media query for mobile view */
+@media (max-width: 767.98px) {
+  .services {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center items horizontally on mobile */
+  }
+  
+  .service {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+
+/* From our Community Styles */
+.from-community {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* Hide overflow to hide prev and next buttons */
+  margin-bottom: 20px; /* Add margin to separate buttons from carousel */
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease; /* Add transition for smooth sliding */
+}
+
+.prev-btn,
+.next-btn,
+.see-all-blogs-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.prev-btn:hover,
+.next-btn:hover,
+.see-all-blogs-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Hide prev and next buttons */
+.prev-btn,
+.next-btn {
+    display: none;
+}
+
+/* Products Styles */
+.products {
+    padding: 2rem 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product {
+    width: 200px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.product p {
+    margin: 0.5rem 0;
+}
+
+.buy-btn {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #e64d4d;
+}
+/* Reviews Styles */
+.reviews {
+  padding: 2rem 0;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 1.5rem;
+}
+
+.review img {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%;
+  margin-bottom: 0.5rem; 
+}
+
+.review-info {
+  text-align: center; 
+}
+
+.review-text h3 {
+  margin: 0 0 0.5rem;
+}
+
+.review-text p {
+  margin: 0;
+}
+
+.rating {
+  display: flex;
+}
+
+.rating .fas {
+  color: #ffc107;
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+
+
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+<div class="banner">
+  <img src="https://via.placeholder.com/1200x400" alt="Banner Image 1">
+  <button class="shop-now-btn">Shop Now</button>
+</div>
+<div class="banner">
+  <img src="https://via.placeholder.com/1200x400" alt="Banner Image 2">
+  <button class="shop-now-btn">Shop Now</button>
+</div>
+<div class="banner">
+  <img src="https://via.placeholder.com/1200x400" alt="Banner Image 3">
+  <button class="shop-now-btn">Shop Now</button>
+</div>
+
+
+  
+  <div class="services">
+    <div class="service">
+      <i class="fas fa-paint-brush"></i>
+      <p>Tattoo Art</p>
+    </div>
+    <div class="service">
+      <i class="fas fa-cut"></i>
+      <p>Body Piercing</p>
+    </div>
+    <div class="service">
+      <i class="fas fa-paint-roller"></i>
+      <p>Tattoo Removal</p>
+    </div>
+    <div class="service">
+      <i class="fas fa-heartbeat"></i>
+      <p>Aftercare Products</p>
+    </div>
+  </div>
+
+ <!-- From our community section -->
+<div class="from-community">
+  <h2>From Our Community</h2>
+  <div class="carousel-container">
+    <div class="carousel">
+   
+      <img src="https://via.placeholder.com/600x300.png" alt="Carousel Image">
+      <img src="https://via.placeholder.com/600x300.png" alt="Carousel Image">
+      <img src="https://via.placeholder.com/600x300.png" alt="Carousel Image">
+      <!---->
+    </div>
+  </div>
+  <button class="prev-btn">Previous</button>
+  <button class="next-btn">Next</button>
+  <button class="see-all-blogs-btn">See All Blogs</button>
+</div>
+
+
+  <div class="products">
+    <h2>New Products</h2>
+    <div class="product-container">
+      <div class="product">
+        <img src="https://via.placeholder.com/1000x1000.png" alt="Product Image">
+        <h3>Product 1</h3>
+        <p>Description of Product 1</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/1000x1000.png" alt="Product Image">
+        <h3>Product 2</h3>
+        <p>Description of Product 2</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/1000x1000.png" alt="Product Image">
+        <h3>Product 3</h3>
+        <p>Description of Product 3</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+  
+    </div>
+
+  </div>
+ 
+ <!-- Reviews-->
+<div class="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="review-container">
+    <div class="review">
+      <div class="review-info">
+        <img src="https://via.placeholder.com/50x50.png" alt="User Image">
+        <div class="review-text">
+          <h3>John Doe</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac neque eget turpis semper viverra.</p>
+        </div>
+      </div>
+      <div class="rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="review-info">
+        <img src="https://via.placeholder.com/50x50.png" alt="User Image">
+        <div class="review-text">
+          <h3>John Doe</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac neque eget turpis semper viverra.</p>
+        </div>
+      </div>
+      <div class="rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+    </div>
+    <div class="review">
+      <div class="review-info">
+        <img src="https://via.placeholder.com/200x200.png" alt="User Image">
+        <div class="review-text">
+          <h3>John Doe</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac neque eget turpis semper viverra.</p>
+        </div>
+      </div>
+      <div class="rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const carousel = document.querySelector('.carousel');
+      const images = carousel.querySelectorAll('img');
+      let currentIndex = 0;
+  
+      function showImage(index) {
+        images.forEach((image, idx) => {
+          if (idx === index) {
+            image.style.display = 'block';
+          } else {
+            image.style.display = 'none';
+          }
+        });
+      }
+  
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      }
+  
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      }
+  
+      // display fillestar
+      showImage(currentIndex);
+  
+      // Button event listeners
+      const nextButton = document.querySelector('.next-btn');
+      const prevButton = document.querySelector('.prev-btn');
+  
+      nextButton.addEventListener('click', nextImage);
+      prevButton.addEventListener('click', prevImage);
+    });
+  </script>
+  
+  
+  <script src="header.js" defer></script>
+  <script src="scripts.js" defer></script>
+
+  <div id="footer-container"></div>
+</body>
+</html>
